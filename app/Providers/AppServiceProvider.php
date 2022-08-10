@@ -26,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        if (config('keys.swap_search') == 'db') {
+            $this->app->bind(RegionInterface::class, DB_Region::class);
+        }
+        else if (config('keys.swap_search') == 'direct') {
+            $this->app->bind(RegionInterface::class, Direct_Region::class);
+        }
     }
 }

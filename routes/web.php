@@ -18,7 +18,7 @@ Route::get('/', function() {
     return "Test Online Hiring PT. Digdaya Olah Teknologi (DOT) Indonesia.";
 });
 
-Route::prefix('search')->group(function() {
+Route::prefix('search')->middleware('auth')->group(function() {
     Route::get('/provinces', [Regions::class, 'getProvinsi']);
     Route::get('/cities', [Regions::class, 'getKota']);
 });
